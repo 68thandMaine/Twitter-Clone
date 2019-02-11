@@ -1,12 +1,20 @@
 import React from 'react';
+import QuickTweet from './QuickTweet';
+import Tweet from './Tweet';
 
-function Stream() {
+const Stream = () => {
+  const block = {
+    width: '65%',
+    backgroundColor: 'white'
+  }
 
-  return (
-    <div>
-      <p>Streams go here</p>
+  return(
+    <div style= { block }>
+      <QuickTweet/>
+      <Tweet/>
     </div>
-  )
-}
+
+  );
+  }
 
 export default Stream

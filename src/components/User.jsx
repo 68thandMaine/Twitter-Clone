@@ -2,8 +2,9 @@ import React from 'react';
 
 const User =() => {
   const block = {
+    float: 'right',
     display: 'inline',
-    marginLeft: '35px',
+    marginRight: '35px',
     fontSize: "1.2em",
     fontFamily: 'sans-serif'
   }

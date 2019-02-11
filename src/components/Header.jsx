@@ -5,12 +5,11 @@ import Navigation from './Navigation'
 
 function Header() {
   const block = {
-    "borderBottom":"1px solid rgba(0,0,0,0.05)",
-    "position":"fixed",
-    "top":"0",
-    "right":"0",
-    "left":"0",
-    "zIndex":"1000"
+    borderBottom:"1px solid rgba(0,0,0,0.05)",
+    zIndex:"1000",
+    padding: '0',
+    margin: '0',
+    backgroundColor: 'white'
   }
 
   return (
