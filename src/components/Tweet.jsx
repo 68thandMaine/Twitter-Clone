@@ -5,6 +5,16 @@ const db = [
     icon: 'https://pbs.twimg.com/profile_images/1087413985698332680/OkCW4GZs_bigger.jpg',
     handle: `j cole`,
     message: `i don’t never wanna be propped up by tearing somebody else down. Seeing Cardi b win a Grammy make me feel like I won. Same with jay rock and Anderson. I feel for Travis cuz he really deserved that acknowledgement as well, but his moment is way bigger than the awards could say`
+  },
+  {
+    icon: 'https://pbs.twimg.com/profile_images/1027369868025384960/rrMe4ORr_bigger.jpg',
+    handle: `Monique`,
+    message: `You don’t always need awards to solidify your mark in this world. Just the impact your music has on your fans can be just as gratifying. ♥️`
+  },
+  {
+    icon: 'https://pbs.twimg.com/profile_images/1032611003408769025/wrCAEPLN_bigger.jpg',
+    handle: `Know your worth`,
+    message: `Ppl rapping your songs so you already won...think that's how Drake put it`
   }
 ];
 
@@ -15,10 +25,7 @@ function ProfilePic(props) {
 
   return (
     <div style={ block }>
-
-
-
-    <p>{props.icon}</p>
+      <img src={props.icon}></img>
     </div>
   )
 }
@@ -30,7 +37,8 @@ function Message(props) {
 
   return (
     <div style={ block }>
-    <p>{props.message}</p>
+      <h3>{props.handle}</h3>
+      <p>{props.message}</p>
     </div>
   )
 }
@@ -57,20 +65,21 @@ const Tweet = () => {
   const block = {
     display: 'grid',
     gridTemplateColumns: '[left] 90px [right] auto',
-    gridTemplateRows: 'auto 40px',
-    backgroundColor: 'red'
-  }
+    gridTemplateRows: 'auto 40px'
+    }
 
   return(
     <div style={ block }>
-      <ProfilePic
-        icon={db[0].icon}/>
-      <Message
-        message={db[0].message}/>
-      <Status/>
-
+      {
+        db.map( ( {icon, handle, message} ) =>
+        [
+          <ProfilePic icon={icon}/>,
+          <Message handle={handle} message={message}/>,
+          <Status/>
+        ]
+      )}
     </div>
-  );
-  }
+  )
+}
 
 export default Tweet
