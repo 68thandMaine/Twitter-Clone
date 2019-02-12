@@ -21,18 +21,24 @@ const db = [
 function ProfilePic(props) {
   const block = {
     gridColumnStart: 'left'
+
+  }
+
+  const imgStyling = {
+    borderRadius: '100%'
   }
 
   return (
     <div style={ block }>
-      <img src={props.icon}></img>
+      <img src={props.icon} style={ imgStyling }></img>
     </div>
   )
 }
 
 function Message(props) {
   const block = {
-    gridColumnStart: 'right'
+    gridColumnStart: 'right',
+    fontFamily: 'sans-serif'
   }
 
   return (
@@ -44,15 +50,21 @@ function Message(props) {
 }
 
 function Status() {
-  const icon = {
-    marginRight: '2em',
+  const block = {
+    borderBotton: '1px solid black',
     fontSize: '1.4em',
     color: '#868686',
-    gridColumnStart: 'right'
+    gridColumnStart: 'right',
+    borderBottom: '1px solid #d2d2d2',
+    padding: '10px 0 25px'
+  }
+
+  const icon = {
+    marginRight: '2em'
   }
 
   return (
-    <div style ={ icon }>
+    <div style ={ block }>
       <i className="far fa-comment" style={ icon }></i>
       <i className="fas fa-retweet" style={ icon }></i>
       <i className="far fa-heart" style={ icon }></i>
@@ -65,17 +77,21 @@ const Tweet = () => {
   const block = {
     display: 'grid',
     gridTemplateColumns: '[left] 90px [right] auto',
-    gridTemplateRows: 'auto 40px'
+    gridTemplateRows: 'auto 40px',
+    padding: '15px',
+
     }
+
+
 
   return(
     <div style={ block }>
       {
         db.map( ( {icon, handle, message} ) =>
         [
-          <ProfilePic icon={icon}/>,
-          <Message handle={handle} message={message}/>,
-          <Status/>
+            <ProfilePic icon={icon}/>,
+            <Message handle={handle} message={message}/>,
+            <Status/>
         ]
       )}
     </div>
