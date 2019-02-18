@@ -1,20 +1,38 @@
 import React from 'react';
 import QuickTweet from './QuickTweet';
 import Tweet from './Tweet';
+import { db } from './db';
 
-const Stream = () => {
-  const block = {
-    width: '65%',
-    backgroundColor: 'white'
+class Stream extends React.Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      tweetsDb: []
+    };
+
+    this.block = {
+      width: '65%'
+      // backgroundColor: 'white'
+    };
+
+    this.handleAddTweetToDb = this.handleAddTweetToDb.bind(this);
   }
 
-  return(
-    <div style= { block }>
-      <QuickTweet/>
-      <Tweet/>
-    </div>
-
-  );
+  handleAddTweetToDb(tweet) {
+    this.setState(state => {
+      return { tweetsDb: [tweet, ...state.tweetsDb] };
+    });
   }
 
-export default Stream
+  render() {
+    return (
+      <div style={this.block}>
+        <QuickTweet onAddTweetToDb={this.handleAddTweetToDb} />
+        <Tweet allTweets={this.state.tweetsDb} />
+      </div>
+    );
+  }
+}
+
+export default Stream;
