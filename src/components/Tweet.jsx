@@ -16,11 +16,11 @@ const Tweet = props => {
 
   return (
     <div>
-      {props.allTweets.map(({ icon, handle, message, id }) => [
-        <div key={id} style={block}>
-          <ProfilePic icon={icon} />
-          <Message handle={handle} message={message} />
-          <Status theTweet={id} onAddTweetToSidebar={props.onAddTweetToSidebar}/>
+      {props.allTweets.map((tweet) => [
+        <div key={tweet.id} style={block}>
+          <ProfilePic icon={tweet.icon} />
+          <Message handle={tweet.handle} message={tweet.message} />
+          <Status theTweet={tweet} onAddTweetToSidebar={props.onAddTweetToSidebar}/>
         </div>
       ])}
     </div>

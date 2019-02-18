@@ -4,14 +4,6 @@ import PropTypes from 'prop-types'
 export class Status extends React.Component{
   constructor(props) {
     super(props)
-    console.log(props)
-
-    this.state = {
-      color: '#868686'
-
-      // color: 'red'
-      // isHearted: false
-    }
 
     this.heartClick = this.heartClick.bind(this)
   }
@@ -20,16 +12,7 @@ export class Status extends React.Component{
 
 
   heartClick(){
-    console.log("you clicked on the heart ", this.props)
-
-    this.setState({color: 'red'})
-
-
-
-
-    this.props.onAddTweetToSidebar(this.props.theTweet)
-
-
+    this.props.onAddTweetToSidebar(this.props.theTweet.id)
   }
 
   render() {
@@ -49,18 +32,18 @@ export class Status extends React.Component{
       <div style={block}>
         <i className='far fa-comment' style={icon} />
         <i className='fas fa-retweet' style={icon} />
-        <i className='far fa-heart' onClick={this.heartClick} style={{...icon, color: this.state.color}} />
+        <i className='far fa-heart' onClick={this.heartClick} style={ this.props.theTweet.heart ? {...icon, color: 'red'}: {...icon, color: '#868686'} } />
         <i className='far fa-share-square' style={icon} />
       </div>
     );
-
+// if true return color: red : color: '#868686'
 
   }
 
 }
 
 Status.propTypes = {
-  theTweet: PropTypes.string,
+  theTweet: PropTypes.object,
   onAddTweetToSidebar: PropTypes.func
 
 }

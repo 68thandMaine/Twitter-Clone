@@ -10,7 +10,7 @@ class Content extends React.Component{
       tweetsDb:[]
     };
     this.handleAddTweetToDb = this.handleAddTweetToDb.bind(this);
-    this.addTweetToSidebar = this.addTweetToSidebar.bind(this);
+    this.handleFavATweet = this.handleFavATweet.bind(this);
   }
 
 
@@ -21,13 +21,16 @@ handleAddTweetToDb(tweet) {
 }
 
 
-addTweetToSidebar(tweetId){
+handleFavATweet(tweetId){
   let newState = this.state.tweetsDb.slice();
 
   newState.forEach((tweet) =>
   {
     if (tweet.id === tweetId) {
-      tweet.heart = true;
+      if (!tweet.heart) {
+        tweet.heart = true;
+      } else { tweet.heart = false; }
+
     }
   })
   this.setState({tweetsDb: newState});
@@ -46,8 +49,8 @@ render(){
 
   return(
     <div style= { bottom }>
-      <Stream allTweets={this.state.tweetsDb} onAddTweetToDb={this.handleAddTweetToDb} onAddTweetToSidebar={this.addTweetToSidebar}/>
-      <SideBar heartedTweets={this.state.tweetsDb.filter((tweet) => tweet.heart)}/>
+      <Stream allTweets={this.state.tweetsDb} onAddTweetToDb={this.handleAddTweetToDb} onAddTweetToSidebar={this.handleFavATweet}/>
+      <SideBar removeHeart={this.handleFavATweet} heartedTweets={this.state.tweetsDb.filter((tweet) => tweet.heart)}/>
     </div>
   );
 
