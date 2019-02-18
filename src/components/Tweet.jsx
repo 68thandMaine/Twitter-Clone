@@ -2,6 +2,7 @@ import React from 'react';
 import { ProfilePic } from './ProfilePic';
 import { Message } from './Message';
 import { Status } from './Status';
+import PropTypes from 'prop-types';
 
 const Tweet = props => {
   const block = {
@@ -19,11 +20,15 @@ const Tweet = props => {
         <div key={id} style={block}>
           <ProfilePic icon={icon} />
           <Message handle={handle} message={message} />
-          <Status />
+          <Status theTweet={id} onAddTweetToSidebar={props.onAddTweetToSidebar}/>
         </div>
       ])}
     </div>
   );
+};
+
+Tweet.propTypes ={
+  onAddTweetToSidebar: PropTypes.func
 };
 
 export default Tweet;
