@@ -30,10 +30,6 @@ class QuickTweet extends React.Component {
           borderBottom: '2px solid #d2d2d2'
         }}
       >
-        <i
-          className='far fa-user-circle'
-          style={{ fontSize: '1.8em', mmargin: '20px' }}
-        />
         <input
           style={STYLES.styledInput}
           type='text'

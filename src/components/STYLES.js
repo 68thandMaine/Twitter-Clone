@@ -5,6 +5,7 @@ export const STYLES = {
     display: 'inline'
   },
   styledInput: {
+    margin: '0 2em',
     backgroundColor: '#f5f8fa',
     borderRadius: '21px',
     border: '1px solid #e6ecf0',
